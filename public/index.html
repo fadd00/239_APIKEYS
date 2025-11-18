@@ -277,6 +277,12 @@
     <div class="container">
         <h1>API Key Management</h1>
 
+        <!-- Navigation Buttons -->
+        <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 30px;">
+            <button onclick="window.location.href='login.html'" style="padding: 12px 24px;">Login</button>
+            <button onclick="window.location.href='register.html'" style="padding: 12px 24px;">Register</button>
+        </div>
+
         <!-- Statistics -->
         <div class="stats">
             <div class="stat-box">
@@ -299,21 +305,9 @@
             <button onclick="generateApiKey()">Generate Key</button>
             <div id="generateResult" class="result"></div>
         </div>
-
-        <!-- List All Keys -->
-        <div class="card">
-            <h2>Daftar API Keys</h2>
-            <button onclick="loadApiKeys()" class="btn-success">Refresh</button>
-            <div id="keysList" class="keys-list"></div>
-        </div>
     </div>
 
     <script>
-        // Load keys on page load
-        window.onload = function() {
-            loadApiKeys();
-        };
-
         // Generate API Key
         async function generateApiKey() {
             const username = document.getElementById('username').value;
@@ -363,7 +357,6 @@
                     
                     document.getElementById('username').value = '';
                     document.getElementById('apiName').value = '';
-                    loadApiKeys();
                 } else {
                     showResult(resultDiv, data.message, 'error');
                 }
